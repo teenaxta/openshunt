@@ -16,12 +16,12 @@ Native delegation uses the host's own subagents. No extra CLI session, applicati
 
 ## Install
 
-Requires **Node.js 22+**, macOS or Linux, and an authenticated host with access to the selected model. Run these commands from this checkout.
+Requires **Node.js 22+**, macOS or Linux, and an authenticated host with access to the selected model. Install the published repository from GitHub:
 
 **Claude Code**
 
 ```sh
-claude plugin marketplace add .
+claude plugin marketplace add teenaxta/openshunt
 claude plugin install openshunt@openshunt
 ```
 
@@ -30,14 +30,14 @@ Restart Claude, then try `/openshunt:bulk-reader`. To try the plugin without ins
 **Codex**
 
 ```sh
-codex plugin marketplace add .
+codex plugin marketplace add teenaxta/openshunt
 codex plugin add openshunt@openshunt
-node ./plugins/openshunt/scripts/openshunt.mjs setup --host codex --transport native
+openshunt setup --host codex --transport native
 ```
 
 Restart Codex and review the hooks in `/hooks` or the app's hook settings. Installation alone does not trust hooks. Setup installs the two native roles into `$CODEX_HOME/agents` (normally `~/.codex/agents`).
 
-Once this repository is published, users can replace `.` in the marketplace command with `OWNER/REPOSITORY`. Both marketplace catalogs are already included. No npm publication is needed.
+For local development from a checkout, use `claude plugin marketplace add .` or `codex plugin marketplace add .` from the repository root. Both marketplace catalogs are included. No npm publication is needed.
 
 ## Try it
 
@@ -65,8 +65,8 @@ A full text read **above 350 lines** triggers the routing guard. Targeted reads 
 Run `/openshunt:savings` in Claude, use the OpenShunt savings skill in Codex, or run:
 
 ```sh
-node ./plugins/openshunt/scripts/openshunt.mjs savings
-node ./plugins/openshunt/scripts/openshunt.mjs savings --json
+openshunt savings
+openshunt savings --json
 ```
 
 The report covers local history across projects:
@@ -89,18 +89,18 @@ Tracking starts when this version is installed; earlier native activity cannot b
 
 ## Choose your models
 
-The examples below use the bundled entrypoint. Optionally run `npm install --global ./plugins/openshunt` and replace `node ./plugins/openshunt/scripts/openshunt.mjs` with `openshunt`.
+The examples below use the `openshunt` command. From a checkout, optionally install it with `npm install --global ./plugins/openshunt` first. Inside the installed plugin, the script is `scripts/openshunt.mjs`; it is not at `./plugins/openshunt/scripts/openshunt.mjs`.
 
 ```sh
 # Set each host's native worker model.
-node ./plugins/openshunt/scripts/openshunt.mjs setup --host claude --model haiku --transport native
-node ./plugins/openshunt/scripts/openshunt.mjs setup --host codex --model gpt-5.6-luna --transport native
+openshunt setup --host claude --model haiku --transport native
+openshunt setup --host codex --model gpt-5.6-luna --transport native
 
 # Change only one mode, and keep configuration local to this project.
-node ./plugins/openshunt/scripts/openshunt.mjs setup --host codex --mode bulk-reader --model gpt-5.6-luna --scope project
+openshunt setup --host codex --mode bulk-reader --model gpt-5.6-luna --scope project
 
 # Inspect configuration without making a model request.
-node ./plugins/openshunt/scripts/openshunt.mjs doctor --host codex
+openshunt doctor --host codex
 ```
 
 Restart Codex after changing a role's model. Claude's Agent call passes the configured model. OpenShunt never silently falls back to a different model. Native model/transport changes must be saved through setup or supplied through environment/project config so the independent hook and role use the same selection.
@@ -139,8 +139,8 @@ Environment keys include `OPENSHUNT_MIN_LINES`, `OPENSHUNT_MODEL`, `OPENSHUNT_WO
 Use native agents for work within the same host. Select CLI transport explicitly for cross-host work or isolated one-shot execution:
 
 ```sh
-node ./plugins/openshunt/scripts/openshunt.mjs setup --host claude --transport cli --worker codex --model gpt-5.6-luna
-node ./plugins/openshunt/scripts/openshunt.mjs doctor --host claude --live
+openshunt setup --host claude --transport cli --worker codex --model gpt-5.6-luna
+openshunt doctor --host claude --live
 ```
 
 `doctor --live` in CLI mode consumes account usage. Native live checks run through the parent's Agent/spawn_agent tool; doctor does not start a CLI on their behalf.

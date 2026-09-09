@@ -1,0 +1,21 @@
+{
+  "name": "openshunt",
+  "version": "0.3.0+codex.20260909121612",
+  "description": "Route bulk reads and boilerplate generation to configurable Claude or Codex workers",
+  "author": {
+    "name": "OpenShunt contributors"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "OpenShunt",
+    "shortDescription": "Delegate bulk I/O to smaller native agents.",
+    "longDescription": "Hooks redirect large reads to configured native subagents. Optional CLI workers support cross-host delegation.",
+    "developerName": "OpenShunt contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": "Use OpenShunt to summarize large files with a smaller model."
+  }
+}

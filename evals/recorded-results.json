@@ -1,0 +1,349 @@
+{
+  "date": "2026-09-09",
+  "environment": {
+    "os": "macOS",
+    "node": "25.9.0",
+    "codex": "0.144.5",
+    "claude": "2.1.266"
+  },
+  "automatedTests": 36,
+  "parents": [
+    {
+      "parent": "claude",
+      "parentModel": "haiku",
+      "worker": "claude",
+      "workerModel": "haiku",
+      "parentSandbox": "Claude dontAsk with explicit Read/Bash allowlist",
+      "checks": {
+        "largeReadDenied": true,
+        "targetedReadPassed": true,
+        "bulkReadPassed": true,
+        "codeWritePassed": true
+      },
+      "passed": true,
+      "trust": "Real plugin loaded with --plugin-dir"
+    },
+    {
+      "parent": "claude",
+      "parentModel": "haiku",
+      "worker": "codex",
+      "workerModel": "gpt-5.6-luna",
+      "parentSandbox": "Claude dontAsk with explicit Read/Bash allowlist",
+      "checks": {
+        "largeReadDenied": true,
+        "targetedReadPassed": true,
+        "bulkReadPassed": true,
+        "codeWritePassed": true
+      },
+      "passed": true,
+      "trust": "Real plugin loaded with --plugin-dir"
+    },
+    {
+      "parent": "codex",
+      "parentModel": "gpt-5.6-luna",
+      "worker": "claude",
+      "workerModel": "haiku",
+      "parentSandbox": "workspace-write",
+      "checks": {
+        "largeReadDenied": true,
+        "targetedReadPassed": true,
+        "bulkReadPassed": true,
+        "codeWritePassed": true
+      },
+      "passed": true,
+      "trust": "One-invocation bypass for explicitly reviewed test hook; normal plugin trust UI and marketplace discovery are not exercised."
+    },
+    {
+      "parent": "codex",
+      "parentModel": "gpt-5.6-luna",
+      "worker": "codex",
+      "workerModel": "gpt-5.6-luna",
+      "parentSandbox": "danger-full-access",
+      "checks": {
+        "largeReadDenied": true,
+        "targetedReadPassed": true,
+        "bulkReadPassed": true,
+        "codeWritePassed": true
+      },
+      "passed": true,
+      "trust": "One-invocation bypass for explicitly reviewed test hook; normal plugin trust UI and marketplace discovery are not exercised."
+    },
+    {
+      "parent": "codex",
+      "parentModel": "gpt-5.6-luna",
+      "worker": "codex",
+      "workerModel": "gpt-5.6-luna",
+      "parentSandbox": "workspace-write",
+      "checks": {
+        "largeReadDenied": true,
+        "targetedReadPassed": true,
+        "bulkReadPassed": false,
+        "codeWritePassed": false
+      },
+      "passed": false,
+      "trust": "One-invocation bypass for explicitly reviewed test hook; normal plugin trust UI and marketplace discovery are not exercised."
+    }
+  ],
+  "benchmarks": [
+    {
+      "scenario": "single-file",
+      "timestamp": "2026-09-09T11:19:43.260Z",
+      "mode": "bulk-reader",
+      "worker": "codex",
+      "model": "gpt-5.6-luna",
+      "latencyMs": 9723,
+      "usage": {
+        "input_tokens": 19958,
+        "output_tokens": 6,
+        "cached_input_tokens": 0
+      },
+      "inputBytes": 30308,
+      "parentVisibleBytes": 14,
+      "estimatedParentInputTokensAvoided": 7574,
+      "corpusBytes": 29839,
+      "estimatedParentContextReductionPercent": 99.95308153758504,
+      "quality": {
+        "passed": true,
+        "method": "Required-symbol checks; not semantic equivalence or a human review"
+      },
+      "hookContracts": {
+        "claude": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        },
+        "codex": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        }
+      }
+    },
+    {
+      "scenario": "source-test-pair",
+      "timestamp": "2026-09-09T11:19:50.598Z",
+      "mode": "bulk-reader",
+      "worker": "codex",
+      "model": "gpt-5.6-luna",
+      "latencyMs": 7304,
+      "usage": {
+        "input_tokens": 29597,
+        "output_tokens": 33,
+        "cached_input_tokens": 0
+      },
+      "inputBytes": 58147,
+      "parentVisibleBytes": 116,
+      "estimatedParentInputTokensAvoided": 14508,
+      "corpusBytes": 52382,
+      "estimatedParentContextReductionPercent": 99.77854988354778,
+      "quality": {
+        "passed": true,
+        "method": "Required-symbol checks; not semantic equivalence or a human review"
+      },
+      "hookContracts": {
+        "claude": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        },
+        "codex": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        }
+      }
+    },
+    {
+      "scenario": "multi-file",
+      "timestamp": "2026-09-09T11:19:58.232Z",
+      "mode": "bulk-reader",
+      "worker": "codex",
+      "model": "gpt-5.6-luna",
+      "latencyMs": 7613,
+      "usage": {
+        "input_tokens": 28386,
+        "output_tokens": 23,
+        "cached_input_tokens": 0
+      },
+      "inputBytes": 60206,
+      "parentVisibleBytes": 69,
+      "estimatedParentInputTokensAvoided": 15035,
+      "corpusBytes": 59684,
+      "estimatedParentContextReductionPercent": 99.8843911266001,
+      "quality": {
+        "passed": true,
+        "method": "Required-symbol checks; not semantic equivalence or a human review"
+      },
+      "hookContracts": {
+        "claude": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        },
+        "codex": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        }
+      }
+    },
+    {
+      "scenario": "generation",
+      "timestamp": "2026-09-09T11:20:07.648Z",
+      "mode": "code-writer",
+      "worker": "codex",
+      "model": "gpt-5.6-luna",
+      "latencyMs": 9389,
+      "usage": {
+        "input_tokens": 21187,
+        "output_tokens": 105,
+        "cached_input_tokens": 11008
+      },
+      "inputBytes": 28278,
+      "parentVisibleBytes": 37,
+      "estimatedParentInputTokensAvoided": 7061,
+      "corpusBytes": 22543,
+      "estimatedParentContextReductionPercent": 99.83586922769818,
+      "quality": {
+        "passed": true,
+        "method": "Run generated node:test file"
+      },
+      "hookContracts": {
+        "claude": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        },
+        "codex": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        }
+      }
+    },
+    {
+      "scenario": "single-file",
+      "timestamp": "2026-09-09T11:20:38.604Z",
+      "mode": "bulk-reader",
+      "worker": "claude",
+      "model": "haiku",
+      "latencyMs": 5576,
+      "usage": {
+        "input_tokens": 9,
+        "output_tokens": 177,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 14663
+      },
+      "inputBytes": 30308,
+      "parentVisibleBytes": 18,
+      "estimatedParentInputTokensAvoided": 7573,
+      "corpusBytes": 29839,
+      "estimatedParentContextReductionPercent": 99.93967626260934,
+      "quality": {
+        "passed": true,
+        "method": "Required-symbol checks; not semantic equivalence or a human review"
+      },
+      "hookContracts": {
+        "claude": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        },
+        "codex": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        }
+      }
+    },
+    {
+      "scenario": "source-test-pair",
+      "timestamp": "2026-09-09T11:20:44.868Z",
+      "mode": "bulk-reader",
+      "worker": "claude",
+      "model": "haiku",
+      "latencyMs": 6226,
+      "usage": {
+        "input_tokens": 9,
+        "output_tokens": 261,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 27514
+      },
+      "inputBytes": 58147,
+      "parentVisibleBytes": 143,
+      "estimatedParentInputTokensAvoided": 14501,
+      "corpusBytes": 52382,
+      "estimatedParentContextReductionPercent": 99.7270054598908,
+      "quality": {
+        "passed": true,
+        "method": "Required-symbol checks; not semantic equivalence or a human review"
+      },
+      "hookContracts": {
+        "claude": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        },
+        "codex": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        }
+      }
+    },
+    {
+      "scenario": "multi-file",
+      "timestamp": "2026-09-09T11:20:50.633Z",
+      "mode": "bulk-reader",
+      "worker": "claude",
+      "model": "haiku",
+      "latencyMs": 5746,
+      "usage": {
+        "input_tokens": 9,
+        "output_tokens": 271,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 24295
+      },
+      "inputBytes": 60206,
+      "parentVisibleBytes": 119,
+      "estimatedParentInputTokensAvoided": 15022,
+      "corpusBytes": 59684,
+      "estimatedParentContextReductionPercent": 99.80061658065813,
+      "quality": {
+        "passed": true,
+        "method": "Required-symbol checks; not semantic equivalence or a human review"
+      },
+      "hookContracts": {
+        "claude": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        },
+        "codex": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        }
+      }
+    },
+    {
+      "scenario": "generation",
+      "timestamp": "2026-09-09T11:20:57.567Z",
+      "mode": "code-writer",
+      "worker": "claude",
+      "model": "haiku",
+      "latencyMs": 6898,
+      "usage": {
+        "input_tokens": 9,
+        "output_tokens": 394,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 17900
+      },
+      "inputBytes": 28278,
+      "parentVisibleBytes": 37,
+      "estimatedParentInputTokensAvoided": 7061,
+      "corpusBytes": 22543,
+      "estimatedParentContextReductionPercent": 99.83586922769818,
+      "quality": {
+        "passed": true,
+        "method": "Run generated node:test file"
+      },
+      "hookContracts": {
+        "claude": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        },
+        "codex": {
+          "largeReadBlocked": true,
+          "targetedReadAllowed": true
+        }
+      }
+    }
+  ]
+}

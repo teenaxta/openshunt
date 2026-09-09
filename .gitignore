@@ -1,0 +1,5 @@
+node_modules/
+.openshunt.json
+.DS_Store
+*.tgz
+evals/results/

@@ -1,0 +1,5 @@
+{
+  "hooks": {
+    "PreToolUse": [{"matcher": "Read|Bash|Agent|Task|spawn_agent|Write|Edit|apply_patch", "hooks": [{"type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pre-tool-use.mjs\"", "timeout": 5}]}]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "openshunt",
+  "version": "0.3.0",
+  "description": "Route bulk reads and boilerplate generation to configurable CLI workers",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "benchmark": "node evals/benchmark.mjs"
+  }
+}

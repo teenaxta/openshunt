@@ -1,0 +1,20 @@
+{
+  "name": "openshunt",
+  "interface": {
+    "displayName": "Openshunt"
+  },
+  "plugins": [
+    {
+      "name": "openshunt",
+      "source": {
+        "source": "local",
+        "path": "./plugins/openshunt"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

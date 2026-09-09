@@ -1,0 +1,9 @@
+{
+  "name": "openshunt",
+  "version": "0.3.0",
+  "description": "Route bulk reads and boilerplate generation to configurable Claude or Codex workers",
+  "author": {
+    "name": "OpenShunt contributors"
+  },
+  "license": "MIT"
+}

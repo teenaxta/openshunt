@@ -1,0 +1,1 @@
+{"name":"openshunt","owner":{"name":"OpenShunt contributors"},"plugins":[{"name":"openshunt","source":"./plugins/openshunt","description":"CLI-backed bulk reads and boilerplate generation"}]}

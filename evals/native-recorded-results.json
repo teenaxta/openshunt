@@ -1,0 +1,75 @@
+[
+  {
+    "host": "claude",
+    "model": "haiku",
+    "parentSandbox": "dontAsk",
+    "latencyMs": 53530,
+    "checks": {
+      "parentReadDenied": true,
+      "targetedReadAllowed": true,
+      "nativeWorkerRead": true,
+      "answer": true,
+      "publication": true
+    },
+    "passed": true,
+    "usage": [
+      {
+        "input_tokens": 58,
+        "cache_creation_input_tokens": 16740,
+        "cache_read_input_tokens": 88779,
+        "output_tokens": 2303,
+        "output_tokens_details": {
+          "thinking_tokens": 670
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 16740,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 8,
+            "output_tokens": 352,
+            "cache_read_input_tokens": 16014,
+            "cache_creation_input_tokens": 726,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 726
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      }
+    ],
+    "trust": "Isolated test hook recorder; Codex uses a one-invocation reviewed-hook trust bypass. Marketplace installation and interactive hook trust are not tested."
+  },
+  {
+    "host": "codex",
+    "model": "gpt-5.6-luna",
+    "parentSandbox": "workspace-write",
+    "latencyMs": 81538,
+    "checks": {
+      "parentReadDenied": true,
+      "targetedReadAllowed": true,
+      "nativeWorkerRead": false,
+      "answer": true,
+      "publication": true
+    },
+    "passed": false,
+    "usage": [
+      {
+        "input_tokens": 337258,
+        "cached_input_tokens": 308224,
+        "output_tokens": 1692,
+        "reasoning_output_tokens": 255
+      }
+    ],
+    "trust": "Isolated test hook recorder; Codex uses a one-invocation reviewed-hook trust bypass. Marketplace installation and interactive hook trust are not tested."
+  }
+]

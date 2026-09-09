@@ -1,0 +1,25 @@
+{
+  "name": "openshunt",
+  "version": "0.3.0",
+  "description": "Native subagent delegation for Claude Code and Codex, with optional CLI workers",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "bin": {
+    "openshunt": "scripts/openshunt.mjs"
+  },
+  "files": [
+    "agents",
+    "native",
+    "lib",
+    "scripts",
+    "hooks",
+    "skills",
+    ".codex-plugin",
+    ".claude-plugin",
+    "README.md",
+    "LICENSE"
+  ]
+}
